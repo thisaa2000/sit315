@@ -1,0 +1,19 @@
+const int motionPin = 2; // Digital input pin for motion sensor
+const int ledPin = 13;   // Digital output pin for LED
+
+void setup() {
+  pinMode(motionPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600); // Initialize Serial communication
+}
+
+void loop() {
+  int motionValue = digitalRead(motionPin); // Read the motion sensor value (HIGH or LOW)
+  digitalWrite(ledPin, motionValue); // Update the LED based on the motion sensor value
+
+  Serial.print("Motion Sensor: ");
+  Serial.print(motionValue == HIGH ? "Motion Detected" : "No Motion"); // Print the sensor status
+  Serial.print("\tLED Status: ");
+  Serial.println(motionValue == HIGH ? "ON" : "OFF"); // Print the LED status
+  delay(1000); // Add a small delay for stability and readability
+}
